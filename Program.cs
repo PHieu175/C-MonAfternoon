@@ -1,1 +1,1 @@
-﻿Console.WriteLine("Hello, Phan Nguyen Minh Hieu!");
+﻿Console.WriteLine("Hello, Phan Hieu!");
