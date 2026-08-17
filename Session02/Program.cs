@@ -19,8 +19,15 @@ internal class Excercise_1
         Console.WriteLine($"After swap number 1 = {number1}, number 2 = {number2}");
 
         // 3. to Multiply two Floating Point Numbers
-        
+        float f1 = 3.5f, f2 = 4.7f;
+        float f = f1 * f2;
+        Console.WriteLine($"{f1}*{f2}={f}");
+    
         // 4. to convert feet to meter
+        float feet = 3.8f;
+        const float rate = 0.3048f;
+        float metter = rate * feet;
+        Console.WriteLine($"{feet} feet = {metter} metter");
 
         // 5. to convert Celsius to Fahrenheit and vice versa
 
