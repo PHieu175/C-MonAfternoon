@@ -26,8 +26,8 @@ internal class Excercise_1
         // 4. to convert feet to meter
         float feet = 3.8f;
         const float rate = 0.3048f;
-        float metter = rate * feet;
-        Console.WriteLine($"{feet} feet = {metter} metter");
+        float meter = rate * feet;
+        Console.WriteLine($"{feet} feet = {meter} meter");
 
         // 5. to convert Celsius to Fahrenheit and vice versa
         float cels = 27f;
