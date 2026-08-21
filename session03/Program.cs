@@ -63,5 +63,9 @@ public static void Main(string[]args)
 
         double bmi = cannang/(chieucao*chieucao);
 
+        Console.WriteLine($"Chi co BMI cua ban: {bmi}");
+
+        Console.ReadKey();
+
     } 
 }
