@@ -1,9 +1,8 @@
 ﻿internal class Excercise_21thAug
 {
-    
-public static void Main(string[]args)
+    static void Bai_1()
     {
-        //Bai 1:
+      //Bai 1:
         Console.Write("Nhap chi so Dien cu (kWh): "); 
         int chisoCu = Convert.ToInt32(Console.ReadLine());
 
@@ -50,7 +49,19 @@ public static void Main(string[]args)
         Console.WriteLine($"Thue VAT (8%): {ThueVat:N0} VND");
         Console.WriteLine($"Tong thanh toan: {tongTien:N0} VND");
 
-        Console.ReadKey();
-
+        Console.ReadKey();  
     }
+public static void Main(string[]args)
+    {
+        Bai_1();
+
+        //Bai 2: 
+        Console.Write("Chieu cao (m): ");
+        double chieucao = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Can nang (kg): ");
+        double cannang = Convert.ToDouble(Console.ReadLine());
+
+        double bmi = cannang/(chieucao*chieucao);
+
+    } 
 }
