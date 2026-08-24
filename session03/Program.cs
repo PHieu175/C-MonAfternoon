@@ -2,7 +2,6 @@
 {
     static void Bai_1()
     {
-      //Bai 1:
         Console.Write("Nhap chi so Dien cu (kWh): "); 
         int chisoCu = Convert.ToInt32(Console.ReadLine());
 
@@ -51,11 +50,8 @@
 
         Console.ReadKey();  
     }
-public static void Main(string[]args)
+    static void Bai_2()
     {
-        Bai_1();
-
-        //Bai 2: 
         Console.Write("Chieu cao (m): ");
         double chieucao = Convert.ToDouble(Console.ReadLine());
         Console.Write("Can nang (kg): ");
@@ -65,7 +61,76 @@ public static void Main(string[]args)
 
         Console.WriteLine($"Chi co BMI cua ban: {bmi}");
 
-        Console.ReadKey();
-
+        Console.ReadKey(); 
+    }
+    static void Bai_3()
+    {
+        
+    }
+    static void Bai_4()
+    {
+        
+    }
+    static void Bai_5()
+    {
+        
+    }
+    static void Bai_6()
+    {
+        
+    }
+    static void Bai_7()
+    {
+        
+    }
+    static void Bai_8()
+    {
+        
+    }
+    static void Bai_9()
+    {
+        
+    }
+    static void Bai_10()
+    {
+        
+    }
+    static void Bai_11()
+    {
+        
+    }
+    static void Bai_12()
+    {
+        
+    }
+    static void Bai_13()
+    {
+        
+    }
+    static void Bai_14()
+    {
+        
+    }
+    static void Bai_15()
+    {
+        
+    }
+public static void Main(string[]args)
+    {
+        Bai_1();
+        Bai_2();
+        Bai_3();
+        Bai_4();
+        Bai_5();
+        Bai_6();
+        Bai_7();
+        Bai_8();
+        Bai_9();
+        Bai_10();
+        Bai_11();
+        Bai_12();
+        Bai_13();
+        Bai_14();
+        Bai_15();
     } 
 }
