@@ -20,15 +20,16 @@
     /// </summary>
     static void bai_2()
     {
-        Console.Write("Nhap gia tri y bat dau: "); int ystart = int.Parse(Console.ReadLine()!);
-        Console.Write("Nhap gia tri y ket thuc: "); int yend = int.Parse(Console.ReadLine()!);
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.Write("NNhập giá trị y bắt đầu: "); int ystart = int.Parse(Console.ReadLine()!);
+        Console.Write("Nhập giá trị y kết thúc: "); int yend = int.Parse(Console.ReadLine()!);
 
         Console.WriteLine("{0,5} | {1,5}", "y", "x");
         //
         Console.WriteLine("-----------------------");
 
         for(int y = ystart; y <= yend; ++y)
-        //chay tu -5 toi 5, va moi lan chay se +1
+        //chạy từ -5 đến 5, và mỗi khi chạy +1
         {
             int x = (y*y) + (2*y) + 1;
             Console.WriteLine("{0,5} | {1,5}", y, x);
