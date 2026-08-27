@@ -201,9 +201,9 @@ internal class Excercise_21thAug
         //Ngày giờ của ngày SN = mốc thời gian nhỏ nhất có thể lưu trữ
 
         Console.Write("Nhập ngày sinh của bạn (định dạng dd/MM/yyyy, ví dụ 15/09/2003): ");
-        string inputStr = Console.ReadLine()!;
+        string duLieuNhap = Console.ReadLine()!;
 
-        DateTime.TryParseExact(inputStr, "dd/MM/yyyy", CultureInfo.InvariantCulture,  DateTimeStyles.None,  out birthDate);
+        DateTime.TryParseExact(duLieuNhap, "dd/MM/yyyy", CultureInfo.InvariantCulture,  DateTimeStyles.None,  out birthDate);
         // "CultureInfo.InvariantCulture" tạo quy chuẩn chung cho all quốc gia
         // "DateTimeStyles.None" ko cho khoảng trắng, hay tự bù trừ múi giờ    
 
