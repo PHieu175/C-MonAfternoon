@@ -242,6 +242,37 @@ internal class Excercise_21thAug
         
         Console.ReadKey();  
     }
+    static void Bai_7()
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.InputEncoding = System.Text.Encoding.UTF8;
+
+        Console.Write("Quãng đường (km): ");
+        double khoangCach = double.Parse(Console.ReadLine()!);
+
+        Console.Write("Mức tiêu hao (L/100km): ");
+        double mucTieuHaoNhienLieu = double.Parse(Console.ReadLine()!);
+
+        Console.Write("Giá xăng (VNĐ/Lít): ");
+        decimal giaXang = decimal.Parse(Console.ReadLine()!);
+
+        Console.Write("Số người đi: ");
+        int slNguoiThamGia = int.Parse(Console.ReadLine()!);
+
+        double tongSoLitNhienLieu = (khoangCach / 100.0) * mucTieuHaoNhienLieu;
+
+        decimal tongGiaXang = (decimal)tongSoLitNhienLieu * giaXang;
+
+        decimal giaGocTrenNguoi = tongGiaXang / slNguoiThamGia;
+        decimal giaLamTronTrenNguoi = Math.Ceiling(giaGocTrenNguoi / 1000m) * 1000m;
+
+        Console.WriteLine($"Tổng nhiên liệu tiêu thụ : {tongSoLitNhienLieu:N2} Lít");
+        Console.WriteLine($"Tổng chi phí xăng dầu   : {tongGiaXang:N0} VNĐ");
+        Console.WriteLine($"Chi phí mỗi người        : {giaLamTronTrenNguoi:N2} VNĐ");
+        Console.WriteLine("---------------------------------------------------------");
+        
+        Console.ReadKey();
+        }
 enum CurrencyType
     {
         USD = 1,
@@ -249,9 +280,8 @@ enum CurrencyType
         JPY,
         GBP,
     }
-
-public static void Main(string[]args)
+    public static void Main(string[]args)
     {
-        Bai_4();
+        Bai_7();
     } 
 }
