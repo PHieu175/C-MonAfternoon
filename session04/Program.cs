@@ -37,7 +37,7 @@
     }
     public static void Main(string[]args)
     {
-       
+        bai_1();
         bai_2();
     }
 }

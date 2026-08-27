@@ -1,7 +1,13 @@
-﻿internal class Excercise_21thAug
+﻿using System.Runtime.CompilerServices;
+
+internal class Excercise_21thAug
 {
     static void Bai_1()
     {
+        //Console.OutputEncoding = System.Text.Encoding.UTF8;
+        //Console.InputEncoding = System.Text.Encoding.UTF8;
+        //Để gõ đc tiếng việt mà thôi
+
         Console.Write("Nhap chi so Dien cu (kWh): "); 
         int chisoCu = Convert.ToInt32(Console.ReadLine());
 
@@ -52,85 +58,150 @@
     }
     static void Bai_2()
     {
-        Console.Write("Chieu cao (m): ");
-        double chieucao = Convert.ToDouble(Console.ReadLine());
-        Console.Write("Can nang (kg): ");
-        double cannang = Convert.ToDouble(Console.ReadLine());
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.InputEncoding = System.Text.Encoding.UTF8;
 
-        double bmi = cannang/(chieucao*chieucao);
+        double chieucao = 0;
+        double cannang = 0;
 
-        Console.WriteLine($"Chi co BMI cua ban: {bmi}");
+        Console.Write("Chiều cao (m): ");
+        chieucao = Convert.ToDouble(Console.ReadLine());
+        if(chieucao <= 0)
+        {
+            Console.WriteLine("Lỗi!!! Chiều cao phải là số thực lớn hơn 0");
+            return;
+        }
+        Console.Write("Cân nặng (kg): ");
+        cannang = Convert.ToDouble(Console.ReadLine());
+         if(cannang <= 0)
+        {
+            Console.WriteLine("Lỗi!!! Cân nặng phải là số thực lớn hơn 0");
+            return;
+        }
+
+        double bmi = cannang/(Math.Pow(chieucao,2));
+
+        string phanLoai = "";
+        if(bmi < 18.5)
+        {
+            phanLoai = "Gầy (Thiếu cân)";
+        }
+        else if(bmi < 23)
+        {
+            phanLoai = "Bình thường (Lý tưởng)";
+        }
+        else if(bmi < 25)
+        {
+            phanLoai = "Thừa cân (Tiền béo phì)";
+        }
+        else
+        {
+            phanLoai = "Béo phì";
+        }
+
+        double minIdealWeight = 18.5 * Math.Pow(chieucao,2);
+        double maxIdealWeight = 22.9 * Math.Pow(chieucao,2);
+    
+        Console.WriteLine($"Chỉ co BMI cua ban: {bmi:F2}");
+        Console.WriteLine($"Phân loại sức khoẻ: {phanLoai}");
+        Console.WriteLine($"Lời khuyên: Cân nặng lý tưởng của bận nên từ {minIdealWeight:F2} kg đến {maxIdealWeight:F2} kg.");
 
         Console.ReadKey(); 
     }
     static void Bai_3()
     {
+       Console.OutputEncoding = System.Text.Encoding.UTF8;
+       Console.InputEncoding = System.Text.Encoding.UTF8;
+
+       decimal vndInput = 0;
+       bool isValid = false;
+
+       do
+        {
+            Console.Write("Nhập số tiền VNĐ: ");
+            string soTien = Console.ReadLine();
+
+            if(decimal.TryParse(soTien, out vndInput) && vndInput > 0)
+            {
+            isValid = true;
+            }
+            else
+            {
+            Console.WriteLine("Lỗi!!! Số tiền nhập phải lớn hơn 0. Vui lòng nhập lại."); 
+            }
+
+        } while(isValid == false);
+
+        CurrencyType currencyDaChon = CurrencyType.USD; 
+        bool isValidChoice = false;
+
+        do
+        {
+            Console.WriteLine("Chọn ngoại tệ (1-USD, 2-EUR, 3-JPY, 4-GBP): "); 
+            string luaChonChuoi = Console.ReadLine();
+            int luaChon;
+
+            if(int.TryParse(luaChonChuoi, out luaChon) && Enum.IsDefined(typeof(CurrencyType), luaChon))
+            {
+                currencyDaChon = (CurrencyType)luaChon;
+                isValidChoice = true;
+            }
+            else
+            {
+                Console.WriteLine("Lỗi!!! Lựa chọn không hợp lệ (Chỉ nhập từ 1 đến 4). Vui lòng nhập lại!");
+            }
+        } while(isValidChoice == false);
+
+        decimal rateUSD = 25400m;
+        decimal rateEUR = 27200m;
+        decimal rateJPY = 165m;
+        decimal rateGBP = 32100m;
+
+        decimal phiPhanTram = 0.005m; 
+        decimal phiDichVu = vndInput * phiPhanTram; 
+        decimal luongTienVNDQuyDoi = vndInput - phiDichVu;
         
-    }
-    static void Bai_4()
+        decimal luongQuyDoi = 0;
+        decimal tyLeQuyDoi = 1;
+        string kyHieuTienTe = "";
+
+        switch (currencyDaChon)
+        {
+            case CurrencyType.USD:
+                tyLeQuyDoi = rateUSD;
+                kyHieuTienTe = "USD";
+                break;
+            case CurrencyType.EUR:
+                tyLeQuyDoi = rateEUR;
+                kyHieuTienTe = "EUR";
+                break;
+            case CurrencyType.JPY:
+                tyLeQuyDoi = rateJPY;
+                kyHieuTienTe = "JPY";
+                break;
+            case CurrencyType.GBP:
+                tyLeQuyDoi = rateGBP;
+                kyHieuTienTe = "GBP";
+                break;
+        }  
+        luongQuyDoi = luongTienVNDQuyDoi/tyLeQuyDoi;
+
+        Console.WriteLine($"Phí dịch vụ (0.5%): {luongTienVNDQuyDoi:N0} VNĐ");
+        Console.WriteLine($"Số tiền tính đổi: {luongTienVNDQuyDoi:N0} VNĐ"); 
+        Console.WriteLine($"Số tiền {kyHieuTienTe} nhận được: {luongQuyDoi:N2} {kyHieuTienTe}");   
+
+        Console.ReadKey();  
+
+    } 
+enum CurrencyType
     {
-        
-    }
-    static void Bai_5()
-    {
-        
-    }
-    static void Bai_6()
-    {
-        
-    }
-    static void Bai_7()
-    {
-        
-    }
-    static void Bai_8()
-    {
-        
-    }
-    static void Bai_9()
-    {
-        
-    }
-    static void Bai_10()
-    {
-        
-    }
-    static void Bai_11()
-    {
-        
-    }
-    static void Bai_12()
-    {
-        
-    }
-    static void Bai_13()
-    {
-        
-    }
-    static void Bai_14()
-    {
-        
-    }
-    static void Bai_15()
-    {
-        
+        USD = 1,
+        EUR,
+        JPY,
+        GBP,
     }
 public static void Main(string[]args)
     {
-        Bai_1();
-        Bai_2();
         Bai_3();
-        Bai_4();
-        Bai_5();
-        Bai_6();
-        Bai_7();
-        Bai_8();
-        Bai_9();
-        Bai_10();
-        Bai_11();
-        Bai_12();
-        Bai_13();
-        Bai_14();
-        Bai_15();
     } 
 }
