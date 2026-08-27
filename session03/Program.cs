@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Globalization;
+using System.Runtime.CompilerServices;
 
 internal class Excercise_21thAug
 {
@@ -119,7 +120,8 @@ internal class Excercise_21thAug
        do
         {
             Console.Write("Nhập số tiền VNĐ: ");
-            string soTien = Console.ReadLine();
+            string soTien = Console.ReadLine()!;
+            //thêm "!" để bỏ thông báo có thể có null
 
             if(decimal.TryParse(soTien, out vndInput) && vndInput > 0)
             {
@@ -139,7 +141,7 @@ internal class Excercise_21thAug
         do
         {
             Console.WriteLine("Chọn ngoại tệ (1-USD, 2-EUR, 3-JPY, 4-GBP): "); 
-            string luaChonChuoi = Console.ReadLine();
+            string luaChonChuoi = Console.ReadLine()!;
             int luaChon;
 
             if(int.TryParse(luaChonChuoi, out luaChon) && Enum.IsDefined(typeof(CurrencyType), luaChon))
@@ -194,6 +196,58 @@ internal class Excercise_21thAug
         Console.ReadKey();  
 
     } 
+    static void Bai_4()
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.InputEncoding = System.Text.Encoding.UTF8;
+
+        DateTime birthDate = DateTime.MinValue;
+        //Ngày giờ của ngày SN = mốc thời gian nhỏ nhất có thể lưu trữ
+
+        Console.Write("Nhập ngày sinh của bạn (định dạng dd/MM/yyyy, ví dụ 15/09/2003): ");
+        string inputStr = Console.ReadLine()!;
+
+        DateTime.TryParseExact(inputStr, "dd/MM/yyyy", CultureInfo.InvariantCulture,  DateTimeStyles.None,  out birthDate);
+        // "CultureInfo.InvariantCulture" tạo quy chuẩn chung cho all quốc gia
+        // "DateTimeStyles.None" ko cho khoảng trắng, hay tự bù trừ múi giờ    
+
+        DateTime today = DateTime.Today;
+
+        int age = today.Year - birthDate.Year;
+        // tính tuổi tạm thời = cách lấy năm nay - năm sinh
+        if (today < birthDate.AddYears(age))
+        {
+            age--;
+        }
+        //birthDate.AddYears sẽ tính ngày sinh trong năm nay = cách lấy ngày/tháng/năm gốc cộng tuổi tạm thời
+        //"if" nếu ngày hôm nay < ngày sinh trong năm nay thì tuổi tạm thời -1
+        // có tham khảo các nguồn bên ngoài
+
+        TimeSpan soNgayDaQua = today - birthDate;
+        int tongNgaySong = (int)soNgayDaQua.TotalDays;
+
+        // tính số ngày còn lại đến sinh nhật tiếp theo
+        int nextBirthdayYear = today.Year;
+        int birthMonth = birthDate.Month;
+        int birthDay = birthDate.Day;
+
+        DateTime nextBirthday = new DateTime(nextBirthdayYear, birthMonth, birthDay);
+
+        if (nextBirthday < today)
+        {
+            nextBirthday = nextBirthday.AddYears(1);
+        }
+
+        int daysLeft = (nextBirthday - today).Days;
+
+        Console.WriteLine($"Tuổi hiện tại: {age} tuổi");
+        Console.WriteLine($"Bạn đã sống tổng cộng: {tongNgaySong:N0} ngày");
+        Console.WriteLine($"Sinh nhật tiếp theo còn: {daysLeft} ngày nữa");
+        
+        Console.ReadKey();  
+
+       
+    }
 enum CurrencyType
     {
         USD = 1,
@@ -201,8 +255,9 @@ enum CurrencyType
         JPY,
         GBP,
     }
+
 public static void Main(string[]args)
     {
-        Bai_3();
+        Bai_4();
     } 
 }
