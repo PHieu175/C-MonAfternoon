@@ -115,7 +115,7 @@ internal class Excercise_21thAug
 
        decimal vndInput = 0;
        bool isValid = false;
-
+    
        do
         {
             Console.Write("Nhập số tiền VNĐ: ");
@@ -131,6 +131,7 @@ internal class Excercise_21thAug
             }
 
         } while(isValid == false);
+        //cách sử dụng "bool" và vòng lặp "do-while" được e tham khảo từ ng bên ngoài
 
         CurrencyType currencyDaChon = CurrencyType.USD; 
         bool isValidChoice = false;
