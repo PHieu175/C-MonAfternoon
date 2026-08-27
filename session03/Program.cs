@@ -5,10 +5,6 @@ internal class Excercise_21thAug
 {
     static void Bai_1()
     {
-        //Console.OutputEncoding = System.Text.Encoding.UTF8;
-        //Console.InputEncoding = System.Text.Encoding.UTF8;
-        //Để gõ đc tiếng việt mà thôi
-
         Console.Write("Nhap chi so Dien cu (kWh): "); 
         int chisoCu = Convert.ToInt32(Console.ReadLine());
 
@@ -245,8 +241,6 @@ internal class Excercise_21thAug
         Console.WriteLine($"Sinh nhật tiếp theo còn: {daysLeft} ngày nữa");
         
         Console.ReadKey();  
-
-       
     }
 enum CurrencyType
     {
