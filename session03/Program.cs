@@ -282,6 +282,10 @@ enum CurrencyType
     }
     public static void Main(string[]args)
     {
+        Bai_1();
+        Bai_2();
+        Bai_3();
+        Bai_4();
         Bai_7();
     } 
 }
